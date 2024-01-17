@@ -1,1 +1,0 @@
-/home/ajcarril/ramdan_ws/devel/.private/moveit_car_sim/lib/pkgconfig/moveit_car_sim.pc
