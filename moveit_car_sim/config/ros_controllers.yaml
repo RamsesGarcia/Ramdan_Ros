@@ -1,0 +1,128 @@
+# Simulation settings for using moveit_sim_controllers
+moveit_sim_hw_interface:
+  joint_model_group: arm_group
+  joint_model_group_pose: home
+# Settings for ros_control_boilerplate control loop
+generic_hw_control_loop:
+  loop_hz: 300
+  cycle_time_error_threshold: 0.01
+# Settings for ros_control hardware interface
+hardware_interface:
+  joints:
+    - Rueda_derecha_del_joint
+    - Rueda_derecha_tras_joint
+    - Rueda_izquierda_del_joint
+    - Rueda_izquierda_tras_joint
+    - Waist_joint
+    - Shoulder_joint
+    - Elbow_joint
+    - Wrist_Roll_joint
+    - Wrist_pitch_joint
+    - Left_Link_joint
+    - Left_gear_joint
+    - Left_arm_joint
+    - Rigth_Link_joint
+    - Rigth_gear_joint
+    - Right_arm_joint
+  sim_control_mode: 1  # 0: position, 1: velocity
+# Publish all joint states
+# Creates the /joint_states topic necessary in ROS
+joint_state_controller:
+  type: joint_state_controller/JointStateController
+  publish_rate: 50
+controller_list:
+  - name: arm_group_controller
+    action_ns: follow_joint_trajectory
+    default: True
+    type: FollowJointTrajectory
+    joints:
+      - Waist_joint
+      - Shoulder_joint
+      - Elbow_joint
+      - Wrist_Roll_joint
+      - Wrist_pitch_joint
+  - name: gripper_controller
+    action_ns: follow_joint_trajectory
+    default: True
+    type: FollowJointTrajectory
+    joints:
+      - Left_Link_joint
+      - Left_gear_joint
+      - Left_arm_joint
+      - Rigth_Link_joint
+      - Rigth_gear_joint
+      - Right_arm_joint
+arm_group_controller:
+  type: position_controllers/JointTrajectoryController
+  joints:
+    - Waist_joint
+    - Shoulder_joint
+    - Elbow_joint
+    - Wrist_Roll_joint
+    - Wrist_pitch_joint
+  gains:
+    Waist_joint:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    Shoulder_joint:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    Elbow_joint:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    Wrist_Roll_joint:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    Wrist_pitch_joint:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+gripper_controller:
+  type: effort_controllers/JointTrajectoryController
+  joints:
+    - Left_Link_joint
+    - Left_gear_joint
+    - Left_arm_joint
+    - Rigth_Link_joint
+    - Rigth_gear_joint
+    - Right_arm_joint
+  gains:
+    Left_Link_joint:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    Left_gear_joint:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    Left_arm_joint:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    Rigth_Link_joint:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    Rigth_gear_joint:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    Right_arm_joint:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1

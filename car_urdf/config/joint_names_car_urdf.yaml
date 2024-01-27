@@ -1,0 +1,1 @@
+controller_joint_names: ['', 'Rueda_izquierda_del_joint', 'Rueda_derecha_del_joint', 'Rueda_izquierda_tras_joint', 'Rueda_derecha_tras_joint', 'Waist_joint', 'Shoulder_joint', 'Elbow_joint', 'Wrist_Roll_joint', 'Wrist_pitch_joint', 'Left_gear_joint', 'Left_arm_joint', 'Rigth_gear_joint', 'Right_arm_joint', 'Left_Link_joint', 'Rigth_Link_joint', ]
